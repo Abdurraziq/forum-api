@@ -1,5 +1,5 @@
-const CommentRepository = require('../../../Domains/comments/CommentRepository')
-const DeleteCommentUseCase = require('../DeleteCommentUseCase')
+import CommentRepository from '../../../Domains/comments/CommentRepository.js'
+import DeleteCommentUseCase from '../DeleteCommentUseCase.js'
 
 describe('DeletCommentUseCase', () => {
   it('should throw error if use case payload not contain needed property', async () => {

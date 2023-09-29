@@ -1,6 +1,6 @@
-const NewReply = require('../../Domains/replies/entities/NewReply')
+import NewReply from '../../Domains/replies/entities/NewReply.js'
 
-class AddReplyUseCase {
+export default class AddReplyUseCase {
   #commentRepository
   #replyRepository
 
@@ -17,5 +17,3 @@ class AddReplyUseCase {
       .addReplyToComment({ content, owner, commentId })
   }
 }
-
-module.exports = AddReplyUseCase

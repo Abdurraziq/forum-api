@@ -1,4 +1,4 @@
-const AuthenticationTokenManager = require('../AuthenticationTokenManager')
+import AuthenticationTokenManager from '../AuthenticationTokenManager.js'
 
 describe('AuthenticationTokenManager interface', () => {
   it('should throw error when invoke unimplemented method', async () => {

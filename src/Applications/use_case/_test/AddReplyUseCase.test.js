@@ -1,7 +1,7 @@
-const CommentRepository = require('../../../Domains/comments/CommentRepository')
-const ReplyRepository = require('../../../Domains/replies/ReplyRepository')
-const AddedReply = require('../../../Domains/replies/entities/AddedReply')
-const AddReplyUseCase = require('../AddReplyUseCase')
+import CommentRepository from '../../../Domains/comments/CommentRepository.js'
+import ReplyRepository from '../../../Domains/replies/ReplyRepository.js'
+import AddedReply from '../../../Domains/replies/entities/AddedReply.js'
+import AddReplyUseCase from '../AddReplyUseCase.js'
 
 describe('AddReplyUseCase', () => {
   it('should orchestrating the add reply action correctly', async () => {

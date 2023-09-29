@@ -1,15 +1,12 @@
 /* istanbul ignore file */
-const Jwt = require('@hapi/jwt');
-const AuthenticationsTableTestHelper = require('./AuthenticationsTableTestHelper');
+import { token } from '@hapi/jwt'
 
-const AuthHelper = {
-    async generateAccessToken({ username, id: userId }) {
-        const accessToken = Jwt.token.generate(
-            { username, userId },
-            process.env.ACCESS_TOKEN_KEY
-        );
-        return accessToken;
-    },
+export default {
+  async generateAccessToken ({ username, id: userId }) {
+    const accessToken = token.generate(
+      { username, userId },
+      process.env.ACCESS_TOKEN_KEY
+    )
+    return accessToken
+  }
 }
-
-module.exports = AuthHelper;

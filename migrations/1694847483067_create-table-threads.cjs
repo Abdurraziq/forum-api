@@ -1,11 +1,14 @@
-/* eslint-disable camelcase */
 exports.up = (pgm) => {
-  pgm.createTable('comments', {
+  pgm.createTable('threads', {
     id: {
-      type: 'CHAR(29)',
+      type: 'CHAR(28)',
       primaryKey: true
     },
-    content: {
+    title: {
+      type: 'TEXT',
+      notNull: true
+    },
+    body: {
       type: 'TEXT',
       notNull: true
     },
@@ -15,25 +18,14 @@ exports.up = (pgm) => {
       references: 'users(id)',
       onDelete: 'cascade'
     },
-    thread_id: {
-      type: 'CHAR(28)',
-      notNull: true,
-      references: 'threads(id)',
-      onDelete: 'cascade'
-    },
     date: {
       type: 'TIMESTAMPTZ',
       notNull: true,
       default: pgm.func('current_timestamp')
-    },
-    is_deleted: {
-      type: 'BOOLEAN',
-      notNull: true,
-      default: false
     }
   })
 }
 
 exports.down = (pgm) => {
-  pgm.dropTable('comments')
+  pgm.dropTable('threads')
 }

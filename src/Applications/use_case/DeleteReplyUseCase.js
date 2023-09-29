@@ -1,4 +1,4 @@
-class DeleteReplyUseCase {
+export default class DeleteReplyUseCase {
   #replyRepository
 
   constructor ({ replyRepository }) {
@@ -33,5 +33,3 @@ class DeleteReplyUseCase {
     }
   }
 }
-
-module.exports = DeleteReplyUseCase

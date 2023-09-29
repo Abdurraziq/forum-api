@@ -1,8 +1,8 @@
-const LoginUserUseCase = require('../../../../Applications/use_case/LoginUserUseCase')
-const RefreshAuthenticationUseCase = require('../../../../Applications/use_case/RefreshAuthenticationUseCase')
-const LogoutUserUseCase = require('../../../../Applications/use_case/LogoutUserUseCase')
+import LoginUserUseCase from '../../../../Applications/use_case/LoginUserUseCase.js'
+import RefreshAuthenticationUseCase from '../../../../Applications/use_case/RefreshAuthenticationUseCase.js'
+import LogoutUserUseCase from '../../../../Applications/use_case/LogoutUserUseCase.js'
 
-class AuthenticationsHandler {
+export default class AuthenticationsHandler {
   constructor (container) {
     this._container = container
 
@@ -46,5 +46,3 @@ class AuthenticationsHandler {
     }
   }
 }
-
-module.exports = AuthenticationsHandler

@@ -1,4 +1,4 @@
-class NewAuth {
+export default class NewAuth {
   constructor (payload) {
     this.#verifyPayload(payload)
 
@@ -18,5 +18,3 @@ class NewAuth {
     }
   }
 }
-
-module.exports = NewAuth

@@ -1,13 +1,27 @@
 {
     "env": {
-        "commonjs": true,
         "es2021": true,
         "node": true,
         "jest": true
     },
-    "extends": "standard",
+    "extends": [
+        "standard",
+        "plugin:node/recommended"
+    ],
     "parserOptions": {
-        "ecmaVersion": "latest"
+        "ecmaVersion": "latest",
+        "sourceType": "module"
     },
-    "rules": {}
+    "settings": {
+        "node": {
+            "tryExtensions": [
+                ".js",
+                ".json",
+                ".node"
+            ]
+        }
+    },
+    "rules": {
+        "node/file-extension-in-import": "error"
+    }
 }

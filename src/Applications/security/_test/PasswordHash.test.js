@@ -1,4 +1,4 @@
-const EncryptionHelper = require('../PasswordHash')
+import EncryptionHelper from '../PasswordHash.js'
 
 describe('EncryptionHelper interface', () => {
   it('should throw error when invoke abstract behavior', async () => {

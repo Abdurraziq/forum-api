@@ -1,5 +1,5 @@
-const AuthenticationRepository = require('../../../Domains/authentications/AuthenticationRepository')
-const DeleteAuthenticationUseCase = require('../DeleteAuthenticationUseCase')
+import AuthenticationRepository from '../../../Domains/authentications/AuthenticationRepository.js'
+import DeleteAuthenticationUseCase from '../DeleteAuthenticationUseCase.js'
 
 describe('DeleteAuthenticationUseCase', () => {
   it('should throw error if use case payload not contain refresh token', async () => {

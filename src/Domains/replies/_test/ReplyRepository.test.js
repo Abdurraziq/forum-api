@@ -1,4 +1,4 @@
-const ReplyRepository = require('../ReplyRepository')
+import ReplyRepository from '../ReplyRepository.js'
 
 describe('ReplyRepository interface', () => {
   it('should throw error when invoke abstract behavior', async () => {

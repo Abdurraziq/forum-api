@@ -1,12 +1,12 @@
-const Hapi = require('@hapi/hapi')
-const Jwt = require('@hapi/jwt')
-const ClientError = require('../../Commons/exceptions/ClientError')
-const DomainErrorTranslator = require('../../Commons/exceptions/DomainErrorTranslator')
-const users = require('../../Interfaces/http/api/users')
-const authentications = require('../../Interfaces/http/api/authentications')
-const threads = require('../../Interfaces/http/api/threads')
+import Hapi from '@hapi/hapi'
+import Jwt from '@hapi/jwt'
+import ClientError from '../../Commons/exceptions/ClientError.js'
+import DomainErrorTranslator from '../../Commons/exceptions/DomainErrorTranslator.js'
+import users from '../../Interfaces/http/api/users/index.js'
+import authentications from '../../Interfaces/http/api/authentications/index.js'
+import threads from '../../Interfaces/http/api/threads/index.js'
 
-const createServer = async (container) => {
+export default async (container) => {
   const server = Hapi.server({
     host: process.env.HOST,
     port: process.env.PORT,
@@ -84,5 +84,3 @@ const createServer = async (container) => {
 
   return server
 }
-
-module.exports = createServer

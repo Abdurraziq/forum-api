@@ -1,6 +1,6 @@
-const AddUserUseCase = require('../../../../Applications/use_case/AddUserUseCase')
+import AddUserUseCase from '../../../../Applications/use_case/AddUserUseCase.js'
 
-class UsersHandler {
+export default class UsersHandler {
   constructor (container) {
     this._container = container
 
@@ -21,5 +21,3 @@ class UsersHandler {
     return response
   }
 }
-
-module.exports = UsersHandler

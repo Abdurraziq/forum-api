@@ -1,5 +1,5 @@
-const AuthenticationRepository = require('../../../Domains/authentications/AuthenticationRepository')
-const LogoutUserUseCase = require('../LogoutUserUseCase')
+import AuthenticationRepository from '../../../Domains/authentications/AuthenticationRepository.js'
+import LogoutUserUseCase from '../LogoutUserUseCase.js'
 
 describe('LogoutUserUseCase', () => {
   it('should throw error if use case payload not contain refresh token', async () => {

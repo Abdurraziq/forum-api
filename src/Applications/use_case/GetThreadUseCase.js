@@ -1,4 +1,4 @@
-class GetThreadUseCase {
+export default class GetThreadUseCase {
   #threadRepository
   #commentRepository
   #replyRepository
@@ -40,5 +40,3 @@ class GetThreadUseCase {
     }
   }
 }
-
-module.exports = GetThreadUseCase

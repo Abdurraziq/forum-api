@@ -1,10 +1,10 @@
-const CommentRepository = require('../../../Domains/comments/CommentRepository')
-const Comment = require('../../../Domains/comments/entities/Comment')
-const ReplyRepository = require('../../../Domains/replies/ReplyRepository')
-const Reply = require('../../../Domains/replies/entities/Reply')
-const ThreadRepository = require('../../../Domains/threads/ThreadRepository')
-const Thread = require('../../../Domains/threads/entities/Thread')
-const GetThreadUseCase = require('../GetThreadUseCase')
+import CommentRepository from '../../../Domains/comments/CommentRepository.js'
+import Comment from '../../../Domains/comments/entities/Comment.js'
+import ReplyRepository from '../../../Domains/replies/ReplyRepository.js'
+import Reply from '../../../Domains/replies/entities/Reply.js'
+import ThreadRepository from '../../../Domains/threads/ThreadRepository.js'
+import Thread from '../../../Domains/threads/entities/Thread.js'
+import GetThreadUseCase from '../GetThreadUseCase.js'
 
 describe('GetThreadUseCase', () => {
   it('should throw error when threadId is not given', async () => {

@@ -1,4 +1,4 @@
-class ReplyRepository {
+export default class ReplyRepository {
   async addReplyToComment (reply) {
     throw new Error('REPLY_REPOSITORY.METHOD_NOT_IMPLEMENTED')
   }
@@ -19,5 +19,3 @@ class ReplyRepository {
     throw new Error('REPLY_REPOSITORY.METHOD_NOT_IMPLEMENTED')
   }
 }
-
-module.exports = ReplyRepository

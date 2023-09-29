@@ -1,6 +1,6 @@
-const RegisterUser = require('../../Domains/users/entities/RegisterUser')
+import RegisterUser from '../../Domains/users/entities/RegisterUser.js'
 
-class AddUserUseCase {
+export default class AddUserUseCase {
   constructor ({ userRepository, passwordHash }) {
     this._userRepository = userRepository
     this._passwordHash = passwordHash
@@ -13,5 +13,3 @@ class AddUserUseCase {
     return this._userRepository.addUser(registerUser)
   }
 }
-
-module.exports = AddUserUseCase

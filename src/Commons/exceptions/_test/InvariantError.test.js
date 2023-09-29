@@ -1,5 +1,5 @@
-const ClientError = require('../ClientError')
-const InvariantError = require('../InvariantError')
+import ClientError from '../ClientError.js'
+import InvariantError from '../InvariantError.js'
 
 describe('InvariantError', () => {
   it('should create an error correctly', () => {

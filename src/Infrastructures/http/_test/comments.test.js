@@ -1,10 +1,10 @@
-const AuthHelper = require('../../../../tests/AuthHelper')
-const CommentsTableTestHelper = require('../../../../tests/CommentsTableTestHelper')
-const ThreadsTableTestHelper = require('../../../../tests/ThreadsTableTestHelper')
-const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper')
-const container = require('../../container')
-const pool = require('../../database/postgres/pool')
-const createServer = require('../createServer')
+import AuthHelper from '../../../../tests/AuthHelper.js'
+import CommentsTableTestHelper from '../../../../tests/CommentsTableTestHelper.js'
+import ThreadsTableTestHelper from '../../../../tests/ThreadsTableTestHelper.js'
+import UsersTableTestHelper from '../../../../tests/UsersTableTestHelper.js'
+import container from '../../container.js'
+import pool from '../../database/postgres/pool.js'
+import createServer from '../createServer.js'
 
 describe('/threads/{threadId}/comments endpoint', () => {
   let accessTokenUser1

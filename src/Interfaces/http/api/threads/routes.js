@@ -1,4 +1,4 @@
-const routes = (handler) => ([
+export default (handler) => ([
   {
     method: 'POST',
     path: '/threads',
@@ -45,5 +45,3 @@ const routes = (handler) => ([
     }
   }
 ])
-
-module.exports = routes

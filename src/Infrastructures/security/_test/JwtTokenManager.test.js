@@ -1,6 +1,6 @@
-const Jwt = require('@hapi/jwt')
-const InvariantError = require('../../../Commons/exceptions/InvariantError')
-const JwtTokenManager = require('../JwtTokenManager')
+import { token } from '@hapi/jwt'
+import InvariantError from '../../../Commons/exceptions/InvariantError.js'
+import JwtTokenManager from '../JwtTokenManager.js'
 
 describe('JwtTokenManager', () => {
   describe('createAccessToken function', () => {
@@ -46,7 +46,7 @@ describe('JwtTokenManager', () => {
   describe('verifyRefreshToken function', () => {
     it('should throw InvariantError when verification failed', async () => {
       // Arrange
-      const jwtTokenManager = new JwtTokenManager(Jwt.token)
+      const jwtTokenManager = new JwtTokenManager(token)
       const accessToken = await jwtTokenManager.createAccessToken({ username: 'dicoding' })
 
       // Action & Assert
@@ -57,7 +57,7 @@ describe('JwtTokenManager', () => {
 
     it('should not throw InvariantError when refresh token verified', async () => {
       // Arrange
-      const jwtTokenManager = new JwtTokenManager(Jwt.token)
+      const jwtTokenManager = new JwtTokenManager(token)
       const refreshToken = await jwtTokenManager.createRefreshToken({ username: 'dicoding' })
 
       // Action & Assert
@@ -70,7 +70,7 @@ describe('JwtTokenManager', () => {
   describe('decodePayload function', () => {
     it('should decode payload correctly', async () => {
       // Arrange
-      const jwtTokenManager = new JwtTokenManager(Jwt.token)
+      const jwtTokenManager = new JwtTokenManager(token)
       const accessToken = await jwtTokenManager.createAccessToken({ username: 'dicoding' })
 
       // Action

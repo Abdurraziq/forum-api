@@ -1,4 +1,4 @@
-const NewAuth = require('../NewAuth')
+import NewAuth from '../NewAuth.js'
 
 describe('NewAuth entities', () => {
   it('should throw error when payload not contain needed property', () => {

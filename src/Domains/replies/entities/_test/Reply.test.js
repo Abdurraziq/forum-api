@@ -1,4 +1,4 @@
-const Reply = require('../Reply')
+import Reply from '../Reply.js'
 
 describe('a Reply entities', () => {
   it('should throw error when payload did not contain needed property', () => {

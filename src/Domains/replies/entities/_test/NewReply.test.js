@@ -1,4 +1,4 @@
-const NewReply = require('../NewReply')
+import NewReply from '../NewReply.js'
 
 describe('an NewReply entities', () => {
   it('should throw error when payload did not contain needed property', () => {

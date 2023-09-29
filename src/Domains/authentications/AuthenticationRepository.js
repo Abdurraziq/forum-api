@@ -1,4 +1,4 @@
-class AuthenticationRepository {
+export default class AuthenticationRepository {
   async addToken (token) {
     throw new Error('AUTHENTICATION_REPOSITORY.METHOD_NOT_IMPLEMENTED')
   }
@@ -11,5 +11,3 @@ class AuthenticationRepository {
     throw new Error('AUTHENTICATION_REPOSITORY.METHOD_NOT_IMPLEMENTED')
   }
 }
-
-module.exports = AuthenticationRepository

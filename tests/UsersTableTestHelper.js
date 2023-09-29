@@ -1,34 +1,32 @@
 /* istanbul ignore file */
-const pool = require('../src/Infrastructures/database/postgres/pool');
+import pool from '../src/Infrastructures/database/postgres/pool.js'
 
-const UsersTableTestHelper = {
-    async addUser({
-        id = 'user-123456789012345678901',
-        username = 'userx',
-        password = 'secret',
-        fullname = 'User x fullname',
-    }) {
-        const query = {
-            text: 'INSERT INTO users VALUES($1, $2, $3, $4)',
-            values: [id, username, password, fullname],
-        };
+export default {
+  async addUser ({
+    id = 'user-123456789012345678901',
+    username = 'userx',
+    password = 'secret',
+    fullname = 'User x fullname'
+  }) {
+    const query = {
+      text: 'INSERT INTO users VALUES($1, $2, $3, $4)',
+      values: [id, username, password, fullname]
+    }
 
-        await pool.query(query);
-    },
+    await pool.query(query)
+  },
 
-    async findUsersById(id) {
-        const query = {
-            text: 'SELECT * FROM users WHERE id = $1',
-            values: [id],
-        };
+  async findUsersById (id) {
+    const query = {
+      text: 'SELECT * FROM users WHERE id = $1',
+      values: [id]
+    }
 
-        const result = await pool.query(query);
-        return result.rows;
-    },
+    const result = await pool.query(query)
+    return result.rows
+  },
 
-    async cleanTable() {
-        await pool.query('DELETE FROM users WHERE 1=1');
-    },
-};
-
-module.exports = UsersTableTestHelper;
+  async cleanTable () {
+    await pool.query('DELETE FROM users WHERE 1=1')
+  }
+}

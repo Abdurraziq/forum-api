@@ -1,10 +1,10 @@
-const AuthorizationError = require('../../Commons/exceptions/AuthorizationError')
-const NotFoundError = require('../../Commons/exceptions/NotFoundError')
-const ReplyRepository = require('../../Domains/replies/ReplyRepository')
-const AddedReply = require('../../Domains/replies/entities/AddedReply')
-const Reply = require('../../Domains/replies/entities/Reply')
+import AuthorizationError from '../../Commons/exceptions/AuthorizationError.js'
+import NotFoundError from '../../Commons/exceptions/NotFoundError.js'
+import ReplyRepository from '../../Domains/replies/ReplyRepository.js'
+import AddedReply from '../../Domains/replies/entities/AddedReply.js'
+import Reply from '../../Domains/replies/entities/Reply.js'
 
-class ReplyRepositoryPostgres extends ReplyRepository {
+export default class ReplyRepositoryPostgres extends ReplyRepository {
   #pool
   #idGenerator
 
@@ -88,5 +88,3 @@ class ReplyRepositoryPostgres extends ReplyRepository {
     return replies
   }
 }
-
-module.exports = ReplyRepositoryPostgres

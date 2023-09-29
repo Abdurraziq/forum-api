@@ -1,9 +1,9 @@
-const NotFoundError = require('../../Commons/exceptions/NotFoundError')
-const ThreadRepository = require('../../Domains/threads/ThreadRepository')
-const AddedThread = require('../../Domains/threads/entities/AddedThread')
-const Thread = require('../../Domains/threads/entities/Thread')
+import NotFoundError from '../../Commons/exceptions/NotFoundError.js'
+import ThreadRepository from '../../Domains/threads/ThreadRepository.js'
+import AddedThread from '../../Domains/threads/entities/AddedThread.js'
+import Thread from '../../Domains/threads/entities/Thread.js'
 
-class ThreadRepositoryPostgres extends ThreadRepository {
+export default class ThreadRepositoryPostgres extends ThreadRepository {
   #pool
   #idGenerator
 
@@ -57,5 +57,3 @@ class ThreadRepositoryPostgres extends ThreadRepository {
     return new Thread(rows[0])
   }
 }
-
-module.exports = ThreadRepositoryPostgres

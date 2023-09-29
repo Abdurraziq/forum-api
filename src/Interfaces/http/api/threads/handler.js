@@ -1,11 +1,11 @@
-const AddCommentUseCase = require('../../../../Applications/use_case/AddCommentUseCase')
-const AddReplyUseCase = require('../../../../Applications/use_case/AddReplyUseCase')
-const AddThreadUseCase = require('../../../../Applications/use_case/AddThreadUseCase')
-const DeleteCommentUseCase = require('../../../../Applications/use_case/DeleteCommentUseCase')
-const DeleteReplyUseCase = require('../../../../Applications/use_case/DeleteReplyUseCase')
-const GetThreadUseCase = require('../../../../Applications/use_case/GetThreadUseCase')
+import AddCommentUseCase from '../../../../Applications/use_case/AddCommentUseCase.js'
+import AddReplyUseCase from '../../../../Applications/use_case/AddReplyUseCase.js'
+import AddThreadUseCase from '../../../../Applications/use_case/AddThreadUseCase.js'
+import DeleteCommentUseCase from '../../../../Applications/use_case/DeleteCommentUseCase.js'
+import DeleteReplyUseCase from '../../../../Applications/use_case/DeleteReplyUseCase.js'
+import GetThreadUseCase from '../../../../Applications/use_case/GetThreadUseCase.js'
 
-class ThreadsHandler {
+export default class ThreadsHandler {
   #container
   constructor (container) {
     this.#container = container
@@ -100,5 +100,3 @@ class ThreadsHandler {
     return { status: 'success' }
   }
 }
-
-module.exports = ThreadsHandler

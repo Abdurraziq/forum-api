@@ -1,4 +1,4 @@
-class LogoutUserUseCase {
+export default class LogoutUserUseCase {
   constructor ({
     authenticationRepository
   }) {
@@ -23,5 +23,3 @@ class LogoutUserUseCase {
     }
   }
 }
-
-module.exports = LogoutUserUseCase

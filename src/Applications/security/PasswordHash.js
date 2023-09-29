@@ -1,4 +1,4 @@
-class PasswordHash {
+export default class PasswordHash {
   async hash (password) {
     throw new Error('PASSWORD_HASH.METHOD_NOT_IMPLEMENTED')
   }
@@ -7,5 +7,3 @@ class PasswordHash {
     throw new Error('PASSWORD_HASH.METHOD_NOT_IMPLEMENTED')
   }
 }
-
-module.exports = PasswordHash

@@ -1,7 +1,7 @@
-const CommentRepository = require('../../../Domains/comments/CommentRepository')
-const AddedComment = require('../../../Domains/comments/entities/AddedComment')
-const ThreadRepository = require('../../../Domains/threads/ThreadRepository')
-const AddCommentUseCase = require('../AddCommentUseCase')
+import CommentRepository from '../../../Domains/comments/CommentRepository.js'
+import AddedComment from '../../../Domains/comments/entities/AddedComment.js'
+import ThreadRepository from '../../../Domains/threads/ThreadRepository.js'
+import AddCommentUseCase from '../AddCommentUseCase.js'
 
 describe('AddCommentUseCase', () => {
   it('should orchestrating the add comment action correctly', async () => {

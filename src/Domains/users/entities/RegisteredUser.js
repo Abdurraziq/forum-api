@@ -1,4 +1,4 @@
-class RegisteredUser {
+export default class RegisteredUser {
   constructor (payload) {
     this.#verifyPayload(payload)
 
@@ -19,5 +19,3 @@ class RegisteredUser {
     }
   }
 }
-
-module.exports = RegisteredUser

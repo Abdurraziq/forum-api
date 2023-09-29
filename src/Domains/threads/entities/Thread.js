@@ -1,4 +1,4 @@
-class Thread {
+export default class Thread {
   constructor (payload) {
     this.#verifyPayload(payload)
 
@@ -31,5 +31,3 @@ class Thread {
     }
   }
 }
-
-module.exports = Thread

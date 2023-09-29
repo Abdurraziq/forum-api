@@ -1,4 +1,4 @@
-class RefreshAuthenticationUseCase {
+export default class RefreshAuthenticationUseCase {
   constructor ({
     authenticationRepository,
     authenticationTokenManager
@@ -31,5 +31,3 @@ class RefreshAuthenticationUseCase {
     }
   }
 }
-
-module.exports = RefreshAuthenticationUseCase

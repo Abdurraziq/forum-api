@@ -1,6 +1,6 @@
-const NewThread = require('../../Domains/threads/entities/NewThread')
+import NewThread from '../../Domains/threads/entities/NewThread.js'
 
-class AddThreadUseCase {
+export default class AddThreadUseCase {
   #threadRepository
 
   constructor ({ threadRepository }) {
@@ -12,5 +12,3 @@ class AddThreadUseCase {
     return this.#threadRepository.addThread(newThread)
   }
 }
-
-module.exports = AddThreadUseCase

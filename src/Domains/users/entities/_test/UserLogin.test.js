@@ -1,4 +1,4 @@
-const UserLogin = require('../UserLogin')
+import UserLogin from '../UserLogin.js'
 
 describe('UserLogin entities', () => {
   it('should throw error when payload does not contain needed property', () => {

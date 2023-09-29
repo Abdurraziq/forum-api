@@ -1,10 +1,10 @@
-const ThreadsTableTestHelper = require('../../../../tests/ThreadsTableTestHelper')
-const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper')
-const NotFoundError = require('../../../Commons/exceptions/NotFoundError')
-const AddedThread = require('../../../Domains/threads/entities/AddedThread')
-const NewThread = require('../../../Domains/threads/entities/NewThread')
-const pool = require('../../database/postgres/pool')
-const ThreadRepositoryPostgres = require('../ThreadRepositoryPostgres')
+import ThreadsTableTestHelper from '../../../../tests/ThreadsTableTestHelper.js'
+import UsersTableTestHelper from '../../../../tests/UsersTableTestHelper.js'
+import NotFoundError from '../../../Commons/exceptions/NotFoundError.js'
+import AddedThread from '../../../Domains/threads/entities/AddedThread.js'
+import NewThread from '../../../Domains/threads/entities/NewThread.js'
+import pool from '../../database/postgres/pool.js'
+import ThreadRepositoryPostgres from '../ThreadRepositoryPostgres.js'
 
 describe('ThreadRepositoryPostgres', () => {
   const fakeUser = {

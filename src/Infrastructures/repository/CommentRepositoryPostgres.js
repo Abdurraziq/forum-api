@@ -1,10 +1,10 @@
-const AuthorizationError = require('../../Commons/exceptions/AuthorizationError')
-const NotFoundError = require('../../Commons/exceptions/NotFoundError')
-const CommentRepository = require('../../Domains/comments/CommentRepository')
-const AddedComment = require('../../Domains/comments/entities/AddedComment')
-const Comment = require('../../Domains/comments/entities/Comment')
+import AuthorizationError from '../../Commons/exceptions/AuthorizationError.js'
+import NotFoundError from '../../Commons/exceptions/NotFoundError.js'
+import CommentRepository from '../../Domains/comments/CommentRepository.js'
+import AddedComment from '../../Domains/comments/entities/AddedComment.js'
+import Comment from '../../Domains/comments/entities/Comment.js'
 
-class CommentRepositoryPostgres extends CommentRepository {
+export default class CommentRepositoryPostgres extends CommentRepository {
   #pool
   #idGenerator
 
@@ -84,5 +84,3 @@ class CommentRepositoryPostgres extends CommentRepository {
     return comments
   }
 }
-
-module.exports = CommentRepositoryPostgres

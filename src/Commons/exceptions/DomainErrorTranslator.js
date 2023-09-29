@@ -1,4 +1,4 @@
-const InvariantError = require('./InvariantError')
+import InvariantError from './InvariantError.js'
 
 const DomainErrorTranslator = {
   translate (error) {
@@ -31,4 +31,4 @@ DomainErrorTranslator._directories = {
   'GET_THREAD_USE_CASE.THREAD_ID_NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('ID dari thread yang diminta harus berupa string')
 }
 
-module.exports = DomainErrorTranslator
+export default DomainErrorTranslator

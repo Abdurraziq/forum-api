@@ -1,4 +1,4 @@
-const Thread = require('../Thread')
+import Thread from '../Thread.js'
 
 describe('a Thread entities', () => {
   it('should throw error when payload did not contain needed property', () => {

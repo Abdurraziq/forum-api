@@ -1,4 +1,4 @@
-class DeleteCommentUseCase {
+export default class DeleteCommentUseCase {
   #commentRepository
 
   constructor ({ commentRepository }) {
@@ -33,5 +33,3 @@ class DeleteCommentUseCase {
     }
   }
 }
-
-module.exports = DeleteCommentUseCase

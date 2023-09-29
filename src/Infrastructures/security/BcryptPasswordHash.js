@@ -1,7 +1,7 @@
-const EncryptionHelper = require('../../Applications/security/PasswordHash')
-const AuthenticationError = require('../../Commons/exceptions/AuthenticationError')
+import EncryptionHelper from '../../Applications/security/PasswordHash.js'
+import AuthenticationError from '../../Commons/exceptions/AuthenticationError.js'
 
-class BcryptPasswordHash extends EncryptionHelper {
+export default class BcryptPasswordHash extends EncryptionHelper {
   #bcrypt
   #saltRound
 
@@ -23,5 +23,3 @@ class BcryptPasswordHash extends EncryptionHelper {
     }
   }
 }
-
-module.exports = BcryptPasswordHash

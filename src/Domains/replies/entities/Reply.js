@@ -1,4 +1,4 @@
-class Reply {
+export default class Reply {
   constructor (payload) {
     this.#verifyPayload(payload)
 
@@ -28,5 +28,3 @@ class Reply {
     }
   }
 }
-
-module.exports = Reply
