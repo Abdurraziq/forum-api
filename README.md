@@ -28,7 +28,7 @@ Submission **Proyek Forun API**  untuk kelas
 | **`POST`**   | `/threads/{threadId}/comments`             | Menambahkan komentar pada suatu thread |
 | **`DELETE`** | `/threads/{threadId}/comments/{commentId}` | Menghapus komentar dari suatu thread   |
 
-### 4. Belasan Komentar
+### 4. Balasan Komentar
 
 | Methode      | Endpoint                                                     | Keterangan                                              |
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------- |
