@@ -29,7 +29,7 @@
     "node": ">=20.x.x"
   },
   "repository": {
-    "url": "https://github.com/Abdurraziq/auth-api",
+    "url": "https://github.com/Abdurraziq/forum-api",
     "type": "git"
   },
   "license": "ISC",
