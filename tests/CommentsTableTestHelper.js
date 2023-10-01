@@ -12,7 +12,6 @@ export default {
       text: 'INSERT INTO comments VALUES($1, $2, $3, $4)',
       values: [id, content, owner, threadId]
     }
-
     await pool.query(query)
   },
 
@@ -21,7 +20,6 @@ export default {
       text: 'SELECT * FROM comments WHERE id = $1',
       values: [id]
     }
-
     const result = await pool.query(query)
     return result.rows
   },
@@ -31,7 +29,6 @@ export default {
       text: 'UPDATE comments SET is_deleted = TRUE WHERE id = $1',
       values: [commentId]
     }
-
     await pool.query(query)
   },
 

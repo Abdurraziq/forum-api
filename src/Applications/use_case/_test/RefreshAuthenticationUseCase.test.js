@@ -34,6 +34,7 @@ describe('RefreshAuthenticationUseCase', () => {
     }
     const mockAuthenticationRepository = new AuthenticationRepository()
     const mockAuthenticationTokenManager = new AuthenticationTokenManager()
+
     // Mocking
     mockAuthenticationRepository.checkAvailabilityToken = jest.fn()
       .mockImplementation(() => Promise.resolve())
@@ -43,7 +44,8 @@ describe('RefreshAuthenticationUseCase', () => {
       .mockImplementation(() => Promise.resolve({ username: 'dicoding', id: 'user-123' }))
     mockAuthenticationTokenManager.createAccessToken = jest.fn()
       .mockImplementation(() => Promise.resolve('some_new_access_token'))
-    // Create the use case instace
+
+    // Create the use case instance
     const refreshAuthenticationUseCase = new RefreshAuthenticationUseCase({
       authenticationRepository: mockAuthenticationRepository,
       authenticationTokenManager: mockAuthenticationTokenManager

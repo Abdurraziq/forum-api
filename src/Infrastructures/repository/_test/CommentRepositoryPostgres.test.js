@@ -168,15 +168,15 @@ describe('CommentRepositoryPostgres', () => {
       // Action & Assert
       await expect(commentRepositoryPostgres.verifyOwnershipOfComment({
         commentId: fakeComment.id,
-        owenerId: 'not-exist-owner'
+        owner: 'not-exist-owner'
       })).rejects.toThrowError(AuthorizationError)
       await expect(commentRepositoryPostgres.verifyOwnershipOfComment({
         commentId: 'not-exist-comment',
-        owenerId: fakeUser.id
+        owner: fakeUser.id
       })).rejects.toThrowError(AuthorizationError)
       await expect(commentRepositoryPostgres.verifyOwnershipOfComment({
         commentId: 'not-exist-comment',
-        owenerId: 'not-exist-owner'
+        owner: 'not-exist-owner'
       })).rejects.toThrowError(AuthorizationError)
     })
 
@@ -199,7 +199,7 @@ describe('CommentRepositoryPostgres', () => {
   })
 
   describe('deleteCommentById function', () => {
-    it('should soft delete comment corectly', async () => {
+    it('should soft delete comment correctly', async () => {
       // Arrange
       const fakeComment = {
         id: 'comment-123456789012345678901',
@@ -209,7 +209,7 @@ describe('CommentRepositoryPostgres', () => {
       await CommentsTableTestHelper.addComment(fakeComment)
       const commentRepositoryPostgres = new CommentRepositoryPostgres(pool, {})
 
-      // Assert berfore action
+      // Assert before action
       const commentsBeforeDeletion = await CommentsTableTestHelper.findCommentById(fakeComment.id)
       expect(commentsBeforeDeletion).toHaveLength(1)
       expect(commentsBeforeDeletion[0].is_deleted).toBeFalsy()

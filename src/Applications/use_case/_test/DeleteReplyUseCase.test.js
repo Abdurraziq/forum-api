@@ -1,7 +1,7 @@
 import ReplyRepository from '../../../Domains/replies/ReplyRepository.js'
 import DeleteReplyUseCase from '../DeleteReplyUseCase.js'
 
-describe('DeletCommentUseCase', () => {
+describe('DeleteCommentUseCase', () => {
   it('should throw error if use case payload not contain needed property', async () => {
     // Arrange
     const useCasePayload1 = {

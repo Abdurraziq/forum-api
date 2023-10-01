@@ -12,8 +12,6 @@ describe('AddThreadUseCase', () => {
       owner: 'user-xxx'
     }
 
-    const fakeNewThread = new NewThread(fakeNewThreadPayload)
-
     const fakeAddedThread = new AddedThread({
       id: 'thread-xxxxxx',
       title: fakeNewThreadPayload.title,
@@ -26,6 +24,7 @@ describe('AddThreadUseCase', () => {
       owner: fakeNewThreadPayload.owner
     })
 
+    const fakeNewThread = new NewThread(fakeNewThreadPayload)
     const mockThreadRepository = new ThreadRepository()
 
     // Mocking

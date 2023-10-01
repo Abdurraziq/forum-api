@@ -1,15 +1,15 @@
 export default class LogoutUserUseCase {
-  constructor ({
-    authenticationRepository
-  }) {
-    this._authenticationRepository = authenticationRepository
+  #authenticationRepository
+
+  constructor ({ authenticationRepository }) {
+    this.#authenticationRepository = authenticationRepository
   }
 
   async execute (useCasePayload) {
     this.#validatePayload(useCasePayload)
     const { refreshToken } = useCasePayload
-    await this._authenticationRepository.checkAvailabilityToken(refreshToken)
-    await this._authenticationRepository.deleteToken(refreshToken)
+    await this.#authenticationRepository.checkAvailabilityToken(refreshToken)
+    await this.#authenticationRepository.deleteToken(refreshToken)
   }
 
   #validatePayload (payload) {

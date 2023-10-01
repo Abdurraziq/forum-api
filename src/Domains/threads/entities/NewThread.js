@@ -3,6 +3,7 @@ export default class NewThread {
     this.#verifyPayload(payload)
 
     const { title, body, owner } = payload
+
     this.title = title
     this.body = body
     this.owner = owner

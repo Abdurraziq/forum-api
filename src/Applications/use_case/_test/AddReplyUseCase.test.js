@@ -35,13 +35,13 @@ describe('AddReplyUseCase', () => {
       .mockImplementation(() => Promise.resolve(fakeAddedReply))
 
     // create use case instance
-    const addReplydUseCase = new AddReplyUseCase({
+    const addReplyUseCase = new AddReplyUseCase({
       commentRepository: mockCommentRepository,
       replyRepository: mockReplyRepository
     })
 
     // Action
-    const actualAddedReply = await addReplydUseCase
+    const actualAddedReply = await addReplyUseCase
       .execute(fakeNewReplyPayload)
 
     // Assert

@@ -12,7 +12,6 @@ export default {
       text: 'INSERT INTO users VALUES($1, $2, $3, $4)',
       values: [id, username, password, fullname]
     }
-
     await pool.query(query)
   },
 
@@ -21,7 +20,6 @@ export default {
       text: 'SELECT * FROM users WHERE id = $1',
       values: [id]
     }
-
     const result = await pool.query(query)
     return result.rows
   },

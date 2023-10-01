@@ -12,10 +12,12 @@ describe('GetAuthenticationUseCase', () => {
       username: 'dicoding',
       password: 'secret'
     }
+
     const mockedAuthentication = new NewAuth({
       accessToken: 'access_token',
       refreshToken: 'refresh_token'
     })
+
     const mockUserRepository = new UserRepository()
     const mockAuthenticationRepository = new AuthenticationRepository()
     const mockAuthenticationTokenManager = new AuthenticationTokenManager()

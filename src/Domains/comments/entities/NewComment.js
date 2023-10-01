@@ -3,6 +3,7 @@ export default class NewComment {
     this.#verifyPayload(payload)
 
     const { content, owner, threadId } = payload
+
     this.content = content
     this.owner = owner
     this.threadId = threadId

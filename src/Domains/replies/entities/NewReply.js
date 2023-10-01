@@ -3,6 +3,7 @@ export default class NewReply {
     this.#verifyPayload(payload)
 
     const { content, owner, commentId, threadId } = payload
+
     this.content = content
     this.owner = owner
     this.commentId = commentId

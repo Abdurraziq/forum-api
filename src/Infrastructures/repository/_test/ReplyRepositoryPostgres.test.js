@@ -186,15 +186,15 @@ describe('CommentRepositoryPostgres', () => {
       // Action & Assert
       await expect(replyRepositoryPostgres.verifyOwnershipOfReply({
         commentId: fakeComment.id,
-        owenerId: 'not-owner'
+        owner: 'not-owner'
       })).rejects.toThrowError(AuthorizationError)
       await expect(replyRepositoryPostgres.verifyOwnershipOfReply({
         commentId: 'non-exist-comment',
-        owenerId: fakeUser.id
+        owner: fakeUser.id
       })).rejects.toThrowError(AuthorizationError)
       await expect(replyRepositoryPostgres.verifyOwnershipOfReply({
         commentId: 'non-exist-comment',
-        owenerId: 'not-owner'
+        owner: 'not-owner'
       })).rejects.toThrowError(AuthorizationError)
     })
 
@@ -218,7 +218,7 @@ describe('CommentRepositoryPostgres', () => {
   })
 
   describe('deleteReplyById function', () => {
-    it('should soft delete reply corectly', async () => {
+    it('should soft delete reply correctly', async () => {
       // Arrange
       const fakeReply = {
         id: 'reply-123456789012345678901',
@@ -229,7 +229,7 @@ describe('CommentRepositoryPostgres', () => {
       await RepliesTableTestHelper.addReply(fakeReply)
       const replyRepositoryPostgres = new ReplyRepositoryPostgres(pool, {})
 
-      // Assert berfore action
+      // Assert before action
       const repliesBeforeDeletion = await RepliesTableTestHelper.findReplyById(fakeReply.id)
       expect(repliesBeforeDeletion).toHaveLength(1)
       expect(repliesBeforeDeletion[0].is_deleted).toBeFalsy()

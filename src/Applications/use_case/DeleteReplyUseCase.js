@@ -8,6 +8,7 @@ export default class DeleteReplyUseCase {
   async execute (payload) {
     this.#verifyPayload(payload)
     const { owner, replyId, commentId, threadId } = payload
+
     await this.#replyRepository
       .verifyAvailableReply({ replyId, commentId, threadId })
     await this.#replyRepository

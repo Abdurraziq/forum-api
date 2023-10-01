@@ -12,7 +12,6 @@ export default {
       text: 'INSERT INTO replies VALUES($1, $2, $3, $4)',
       values: [id, content, owner, commentId]
     }
-
     await pool.query(query)
   },
 
@@ -21,7 +20,6 @@ export default {
       text: 'SELECT * FROM replies WHERE id = $1',
       values: [replyId]
     }
-
     const result = await pool.query(query)
     return result.rows
   },
@@ -31,7 +29,6 @@ export default {
       text: 'UPDATE replies SET is_deleted = TRUE WHERE id = $1',
       values: [replyId]
     }
-
     await pool.query(query)
   },
 

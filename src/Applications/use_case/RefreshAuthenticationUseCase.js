@@ -1,28 +1,27 @@
 export default class RefreshAuthenticationUseCase {
-  constructor ({
-    authenticationRepository,
-    authenticationTokenManager
-  }) {
-    this._authenticationRepository = authenticationRepository
-    this._authenticationTokenManager = authenticationTokenManager
+  #authenticationRepository
+  #authenticationTokenManager
+
+  constructor ({ authenticationRepository, authenticationTokenManager }) {
+    this.#authenticationRepository = authenticationRepository
+    this.#authenticationTokenManager = authenticationTokenManager
   }
 
   async execute (useCasePayload) {
     this.#verifyPayload(useCasePayload)
     const { refreshToken } = useCasePayload
 
-    await this._authenticationTokenManager.verifyRefreshToken(refreshToken)
-    await this._authenticationRepository.checkAvailabilityToken(refreshToken)
+    await this.#authenticationTokenManager.verifyRefreshToken(refreshToken)
+    await this.#authenticationRepository.checkAvailabilityToken(refreshToken)
 
-    const { username, id } = await this._authenticationTokenManager.decodePayload(refreshToken)
-
-    return this._authenticationTokenManager.createAccessToken({ username, id })
+    const { username, id } = await this.#authenticationTokenManager.decodePayload(refreshToken)
+    return this.#authenticationTokenManager.createAccessToken({ username, id })
   }
 
   #verifyPayload (payload) {
     const { refreshToken } = payload
 
-    if (!refreshToken) {
+    if (refreshToken === undefined) {
       throw new Error('REFRESH_AUTHENTICATION_USE_CASE.NOT_CONTAIN_REFRESH_TOKEN')
     }
 

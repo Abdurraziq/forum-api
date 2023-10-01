@@ -15,9 +15,7 @@ describe('DeleteAuthenticationUseCase', () => {
 
   it('should throw error if refresh token not string', async () => {
     // Arrange
-    const useCasePayload = {
-      refreshToken: 123
-    }
+    const useCasePayload = { refreshToken: 123 }
     const deleteAuthenticationUseCase = new DeleteAuthenticationUseCase({})
 
     // Action & Assert
@@ -28,9 +26,7 @@ describe('DeleteAuthenticationUseCase', () => {
 
   it('should orchestrating the delete authentication action correctly', async () => {
     // Arrange
-    const useCasePayload = {
-      refreshToken: 'refreshToken'
-    }
+    const useCasePayload = { refreshToken: 'refreshToken' }
     const mockAuthenticationRepository = new AuthenticationRepository()
     mockAuthenticationRepository.checkAvailabilityToken = jest.fn()
       .mockImplementation(() => Promise.resolve())
