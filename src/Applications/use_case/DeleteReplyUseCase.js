@@ -18,17 +18,17 @@ export default class DeleteReplyUseCase {
 
   #verifyPayload ({ owner, replyId, commentId, threadId }) {
     if (owner === undefined ||
-            replyId === undefined ||
-            commentId === undefined ||
-            threadId === undefined
+        replyId === undefined ||
+        commentId === undefined ||
+        threadId === undefined
     ) {
       throw new Error('DELETE_REPLY_USE_CASE.NOT_CONTAIN_NEEDED_PROPERTY')
     }
 
     if (typeof owner !== 'string' ||
-            typeof replyId !== 'string' ||
-            typeof commentId !== 'string' ||
-            typeof threadId !== 'string'
+        typeof replyId !== 'string' ||
+        typeof commentId !== 'string' ||
+        typeof threadId !== 'string'
     ) {
       throw new Error('DELETE_REPLY_USE_CASE.NOT_MEET_DATA_TYPE_SPECIFICATION')
     }
