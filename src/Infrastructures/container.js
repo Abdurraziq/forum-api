@@ -11,12 +11,14 @@ import pool from './database/postgres/pool.js'
 // service (repository, helper, manager, etc)
 import AuthenticationRepository from '../Domains/authentications/AuthenticationRepository.js'
 import CommentRepository from '../Domains/comments/CommentRepository.js'
+import CommentLikeRepository from '../Domains/comment_likes/CommentLikeRepository.js'
 import ReplyRepository from '../Domains/replies/ReplyRepository.js'
-import UserRepository from '../Domains/users/UserRepository.js'
 import ThreadRepository from '../Domains/threads/ThreadRepository.js'
+import UserRepository from '../Domains/users/UserRepository.js'
 
 import AuthenticationRepositoryPostgres from './repository/AuthenticationRepositoryPostgres.js'
 import CommentRepositoryPostgres from './repository/CommentRepositoryPostgres.js'
+import CommentLikeRepositoryPostgres from './repository/CommentLikeRepositoryPostgres.js'
 import ReplyRepositoryPostgres from './repository/ReplyRepositoryPostgres.js'
 import ThreadRepositoryPostgres from './repository/ThreadRepositoryPostgres.js'
 import UserRepositoryPostgres from './repository/UserRepositoryPostgres.js'
@@ -27,16 +29,17 @@ import JwtTokenManager from './security/JwtTokenManager.js'
 import PasswordHash from '../Applications/security/PasswordHash.js'
 
 // use case
-import AddUserUseCase from '../Applications/use_case/AddUserUseCase.js'
-import LogoutUserUseCase from '../Applications/use_case/LogoutUserUseCase.js'
-import LoginUserUseCase from '../Applications/use_case/LoginUserUseCase.js'
-import RefreshAuthenticationUseCase from '../Applications/use_case/RefreshAuthenticationUseCase.js'
 import AddCommentUseCase from '../Applications/use_case/AddCommentUseCase.js'
 import AddReplyUseCase from '../Applications/use_case/AddReplyUseCase.js'
 import AddThreadUseCase from '../Applications/use_case/AddThreadUseCase.js'
+import AddUserUseCase from '../Applications/use_case/AddUserUseCase.js'
 import DeleteCommentUseCase from '../Applications/use_case/DeleteCommentUseCase.js'
 import DeleteReplyUseCase from '../Applications/use_case/DeleteReplyUseCase.js'
 import GetThreadUseCase from '../Applications/use_case/GetThreadUseCase.js'
+import LikeCommentUseCase from '../Applications/use_case/LikeCommentUseCase.js'
+import LoginUserUseCase from '../Applications/use_case/LoginUserUseCase.js'
+import LogoutUserUseCase from '../Applications/use_case/LogoutUserUseCase.js'
+import RefreshAuthenticationUseCase from '../Applications/use_case/RefreshAuthenticationUseCase.js'
 
 // creating container
 const container = createContainer()
@@ -121,6 +124,20 @@ container.register([
   {
     key: ReplyRepository.name,
     Class: ReplyRepositoryPostgres,
+    parameter: {
+      dependencies: [
+        {
+          concrete: pool
+        },
+        {
+          concrete: nanoid
+        }
+      ]
+    }
+  },
+  {
+    key: CommentLikeRepository.name,
+    Class: CommentLikeRepositoryPostgres,
     parameter: {
       dependencies: [
         {
@@ -298,6 +315,27 @@ container.register([
         {
           name: 'replyRepository',
           internal: ReplyRepository.name
+        },
+        {
+          name: 'commentLikeRepository',
+          internal: CommentLikeRepository.name
+        }
+      ]
+    }
+  },
+  {
+    key: LikeCommentUseCase.name,
+    Class: LikeCommentUseCase,
+    parameter: {
+      injectType: 'destructuring',
+      dependencies: [
+        {
+          name: 'commentRepository',
+          internal: CommentRepository.name
+        },
+        {
+          name: 'commentLikeRepository',
+          internal: CommentLikeRepository.name
         }
       ]
     }

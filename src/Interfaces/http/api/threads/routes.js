@@ -43,5 +43,13 @@ export default (handler) => ([
     options: {
       auth: 'garuda_forum_jwt'
     }
+  },
+  {
+    method: 'PUT',
+    path: '/threads/{threadId}/comments/{commentId}/likes',
+    handler: handler.putLike,
+    options: {
+      auth: 'garuda_forum_jwt'
+    }
   }
 ])

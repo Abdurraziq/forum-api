@@ -1,5 +1,5 @@
+import CommentLikeRepository from '../../../Domains/comment_likes/CommentLikeRepository.js'
 import CommentRepository from '../../../Domains/comments/CommentRepository.js'
-import Comment from '../../../Domains/comments/entities/Comment.js'
 import ReplyRepository from '../../../Domains/replies/ReplyRepository.js'
 import Reply from '../../../Domains/replies/entities/Reply.js'
 import ThreadRepository from '../../../Domains/threads/ThreadRepository.js'
@@ -42,18 +42,20 @@ describe('GetThreadUseCase', () => {
     })
 
     const fakeComments = [
-      new Comment({
+      {
         id: 'comment-1',
         username: 'usery',
         date: '2023-09-18T07:19:09.775Z',
-        content: 'comments 1'
-      }),
-      new Comment({
+        content: 'comments 1',
+        likeCount: 2
+      },
+      {
         id: 'comment-2',
         username: 'userz',
         date: '2023-09-18T07:19:09.775Z',
-        content: 'comments 2'
-      })
+        content: 'comments 2',
+        likeCount: 2
+      }
     ]
 
     const fakeReplies = [
@@ -84,6 +86,7 @@ describe('GetThreadUseCase', () => {
     const mockThreadRepository = new ThreadRepository()
     const mockCommentRepository = new CommentRepository()
     const mockReplyRepository = new ReplyRepository()
+    const mockCommentLikeRepository = new CommentLikeRepository()
 
     // Mocking
     mockThreadRepository.getThreadById = jest.fn()
@@ -92,12 +95,15 @@ describe('GetThreadUseCase', () => {
       .mockImplementation(() => Promise.resolve(fakeComments))
     mockReplyRepository.getRepliesByCommentId = jest.fn()
       .mockImplementation(() => Promise.resolve(fakeReplies))
+    mockCommentLikeRepository.getCommentLikesCount = jest.fn()
+      .mockImplementation(() => Promise.resolve(2))
 
     // create use case instance
     const getThreadUseCase = new GetThreadUseCase({
       threadRepository: mockThreadRepository,
       commentRepository: mockCommentRepository,
-      replyRepository: mockReplyRepository
+      replyRepository: mockReplyRepository,
+      commentLikeRepository: mockCommentLikeRepository
     })
 
     // Action
@@ -113,10 +119,16 @@ describe('GetThreadUseCase', () => {
 
     expect(mockReplyRepository.getRepliesByCommentId)
       .toBeCalledTimes(2)
-
     expect(mockReplyRepository.getRepliesByCommentId)
       .toBeCalledWith(fakeComments[0].id)
     expect(mockReplyRepository.getRepliesByCommentId)
+      .toBeCalledWith(fakeComments[1].id)
+
+    expect(mockCommentLikeRepository.getCommentLikesCount)
+      .toBeCalledTimes(2)
+    expect(mockCommentLikeRepository.getCommentLikesCount)
+      .toBeCalledWith(fakeComments[0].id)
+    expect(mockCommentLikeRepository.getCommentLikesCount)
       .toBeCalledWith(fakeComments[1].id)
   })
 })

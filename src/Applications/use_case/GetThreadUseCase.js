@@ -2,11 +2,13 @@ export default class GetThreadUseCase {
   #threadRepository
   #commentRepository
   #replyRepository
+  #commentLikeRepository
 
-  constructor ({ threadRepository, commentRepository, replyRepository }) {
+  constructor ({ threadRepository, commentRepository, replyRepository, commentLikeRepository }) {
     this.#threadRepository = threadRepository
     this.#commentRepository = commentRepository
     this.#replyRepository = replyRepository
+    this.#commentLikeRepository = commentLikeRepository
   }
 
   async execute (threadId) {
@@ -24,6 +26,7 @@ export default class GetThreadUseCase {
       comments: await Promise.all(comments.map(async comment => {
         return {
           ...comment,
+          likeCount: await this.#commentLikeRepository.getCommentLikesCount(comment.id),
           replies: await replyFromComment(comment.id)
         }
       }))

@@ -4,6 +4,7 @@ import AddThreadUseCase from '../../../../Applications/use_case/AddThreadUseCase
 import DeleteCommentUseCase from '../../../../Applications/use_case/DeleteCommentUseCase.js'
 import DeleteReplyUseCase from '../../../../Applications/use_case/DeleteReplyUseCase.js'
 import GetThreadUseCase from '../../../../Applications/use_case/GetThreadUseCase.js'
+import LikeCommentUseCase from '../../../../Applications/use_case/LikeCommentUseCase.js'
 
 export default class ThreadsHandler {
   #container
@@ -16,6 +17,7 @@ export default class ThreadsHandler {
     this.deleteComment = this.deleteComment.bind(this)
     this.postReply = this.postReply.bind(this)
     this.deleteReply = this.deleteReply.bind(this)
+    this.putLike = this.putLike.bind(this)
   }
 
   async postThread ({ payload, auth }, h) {
@@ -97,6 +99,14 @@ export default class ThreadsHandler {
     }
     const deleteReplyUseCase = this.#container.getInstance(DeleteReplyUseCase.name)
     await deleteReplyUseCase.execute(deleteReplyPayload)
+    return { status: 'success' }
+  }
+
+  async putLike ({ params, auth }) {
+    const { threadId, commentId } = params
+    const { userId } = auth.credentials
+    const likeCommentUseCase = this.#container.getInstance(LikeCommentUseCase.name)
+    await likeCommentUseCase.execute({ userId, threadId, commentId })
     return { status: 'success' }
   }
 }
