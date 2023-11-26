@@ -11,17 +11,17 @@ import ReplyRepositoryPostgres from '../ReplyRepositoryPostgres.js'
 
 describe('CommentRepositoryPostgres', () => {
   const fakeUser = {
-    id: 'user-123456789012345678901',
+    id: 'user-12345678901234567890',
     username: 'user'
   }
 
   const fakeThread = {
-    id: 'thread-123456789012345678901',
+    id: 'thread-12345678901234567890',
     owner: fakeUser.id
   }
 
   const fakeComment = {
-    id: 'comment-123456789012345678901',
+    id: 'comment-12345678901234567890',
     owner: fakeUser.id,
     threadId: fakeThread.id
   }
@@ -53,7 +53,7 @@ describe('CommentRepositoryPostgres', () => {
         threadId: fakeThread.id
       })
 
-      const fakeIdGenerator = () => '123456789012345678901' // stub!
+      const fakeIdGenerator = () => '12345678901234567890' // stub!
       const replyRepositoryPostgres = new ReplyRepositoryPostgres(pool, fakeIdGenerator)
 
       // Action
@@ -82,7 +82,7 @@ describe('CommentRepositoryPostgres', () => {
         threadId: fakeThread.id
       })
 
-      const fakeIdGenerator = () => '123456789012345678901' // stub!
+      const fakeIdGenerator = () => '12345678901234567890' // stub!
       const replyRepositoryPostgres = new ReplyRepositoryPostgres(pool, fakeIdGenerator)
 
       // Action
@@ -101,7 +101,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should throw NotFoundError when reply is not found', async () => {
       // Arrange
       const fakeReply = {
-        id: 'reply-123456789012345678901',
+        id: 'reply-12345678901234567890',
         owner: fakeUser.id,
         commentId: fakeComment.id
       }
@@ -132,7 +132,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should throw NotFoundError when reply is (soft) deleted', async () => {
       // Arrange
       const fakeReply = {
-        id: 'reply-123456789012345678901',
+        id: 'reply-12345678901234567890',
         owner: fakeUser.id,
         commentId: fakeComment.id
       }
@@ -153,7 +153,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should not throw NotFoundError when reply is found', async () => {
       // Arrange
       const fakeReply = {
-        id: 'reply-123456789012345678901',
+        id: 'reply-12345678901234567890',
         owner: fakeUser.id,
         commentId: fakeComment.id
       }
@@ -175,7 +175,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should throw AuthorizationError when reply and owner is not match', async () => {
       // Arrange
       const fakeReply = {
-        id: 'reply-123456789012345678901',
+        id: 'reply-12345678901234567890',
         owner: fakeUser.id,
         commentId: fakeComment.id
       }
@@ -201,7 +201,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should not throw AuthorizationError when reply and owner is match', async () => {
       // Arrange
       const fakeReply = {
-        id: 'reply-123456789012345678901',
+        id: 'reply-12345678901234567890',
         owner: fakeUser.id,
         commentId: fakeComment.id
       }
@@ -221,7 +221,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should soft delete reply correctly', async () => {
       // Arrange
       const fakeReply = {
-        id: 'reply-123456789012345678901',
+        id: 'reply-12345678901234567890',
         owner: fakeUser.id,
         commentId: fakeComment.id
       }
@@ -257,7 +257,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should return replies correctly', async () => {
       // Arrange
       const fakeReply = {
-        id: 'reply-123456789012345678901',
+        id: 'reply-12345678901234567890',
         owner: fakeUser.id,
         content: 'Reply',
         commentId: fakeComment.id
@@ -281,7 +281,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should return replies content correctly, before and after soft deletion', async () => {
       // Arrange
       const fakeReply = {
-        id: 'reply-123456789012345678901',
+        id: 'reply-12345678901234567890',
         owner: fakeUser.id,
         content: 'Reply',
         commentId: fakeComment.id

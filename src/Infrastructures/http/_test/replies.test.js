@@ -12,31 +12,31 @@ describe('/threads/{threadId}/comments/{commentId}/replies endpoint', () => {
   let accessTokenUser2
 
   const fakeUser1 = {
-    id: 'user-000000000000000000001',
+    id: 'user-00000000000000000001',
     username: 'userx'
   }
 
   const fakeUser2 = {
-    id: 'user-000000000000000000002',
+    id: 'user-00000000000000000002',
     username: 'usery'
   }
 
   const fakeThread1 = {
-    id: 'thread-000000000000000000001',
+    id: 'thread-00000000000000000001',
     title: 'Thread title 1',
     body: 'Thread body content 1',
     owner: fakeUser1.id
   }
 
   const fakeThread2 = {
-    id: 'thread-000000000000000000002',
+    id: 'thread-00000000000000000002',
     title: 'Thread title 2',
     body: 'Thread body content 2',
     owner: fakeUser2.id
   }
 
   const fakeComment1 = {
-    id: 'comment-000000000000000000000',
+    id: 'comment-00000000000000000000',
     content: 'Comment 1',
     owner: fakeUser1.id,
     threadId: fakeThread1.id
@@ -225,7 +225,7 @@ describe('/threads/{threadId}/comments/{commentId}/replies endpoint', () => {
     it('should response 200 and soft delete comment', async () => {
       // Arrange
       const fakeReply1 = {
-        id: 'reply-000000000000000000000',
+        id: 'reply-00000000000000000000',
         content: 'Comment 1',
         owner: fakeUser1.id,
         commentId: fakeComment1.id
@@ -278,7 +278,7 @@ describe('/threads/{threadId}/comments/{commentId}/replies endpoint', () => {
     it('should response 403 if user not authorized', async () => {
       // Arrange
       const fakeReply1 = {
-        id: 'reply-000000000000000000000',
+        id: 'reply-00000000000000000000',
         content: 'Comment 1',
         owner: fakeUser1.id, // owner is user1
         commentId: fakeComment1.id
@@ -307,7 +307,7 @@ describe('/threads/{threadId}/comments/{commentId}/replies endpoint', () => {
     it('should response 404 if thread, comment and/or reply not exist', async () => {
       // Arrange
       const fakeReply1 = {
-        id: 'reply-000000000000000000000',
+        id: 'reply-00000000000000000000',
         content: 'Comment 1',
         owner: fakeUser1.id, // owner is user1
         commentId: fakeComment1.id

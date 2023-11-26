@@ -41,14 +41,14 @@ describe('UserRepositoryPostgres', () => {
         password: 'secret_password',
         fullname: 'Dicoding Indonesia'
       })
-      const fakeIdGenerator = () => '123456789012345678901' // stub!
+      const fakeIdGenerator = () => '12345678901234567890' // stub!
       const userRepositoryPostgres = new UserRepositoryPostgres(pool, fakeIdGenerator)
 
       // Action
       await userRepositoryPostgres.addUser(registerUser)
 
       // Assert
-      const users = await UsersTableTestHelper.findUsersById('user-123456789012345678901')
+      const users = await UsersTableTestHelper.findUsersById('user-12345678901234567890')
       expect(users).toHaveLength(1)
     })
 
@@ -59,7 +59,7 @@ describe('UserRepositoryPostgres', () => {
         password: 'secret_password',
         fullname: 'Dicoding Indonesia'
       })
-      const fakeIdGenerator = () => '123456789012345678901' // stub!
+      const fakeIdGenerator = () => '12345678901234567890' // stub!
       const userRepositoryPostgres = new UserRepositoryPostgres(pool, fakeIdGenerator)
 
       // Action
@@ -67,7 +67,7 @@ describe('UserRepositoryPostgres', () => {
 
       // Assert
       expect(registeredUser).toStrictEqual(new RegisteredUser({
-        id: 'user-123456789012345678901',
+        id: 'user-12345678901234567890',
         username: 'dicoding',
         fullname: 'Dicoding Indonesia'
       }))
@@ -113,7 +113,7 @@ describe('UserRepositoryPostgres', () => {
     it('should return user id correctly', async () => {
       // Arrange
       await UsersTableTestHelper.addUser({
-        id: 'user-123456789012345678901',
+        id: 'user-12345678901234567890',
         username: 'dicoding'
       })
       const userRepositoryPostgres = new UserRepositoryPostgres(pool, {})
@@ -122,7 +122,7 @@ describe('UserRepositoryPostgres', () => {
       const userId = await userRepositoryPostgres.getIdByUsername('dicoding')
 
       // Assert
-      expect(userId).toEqual('user-123456789012345678901')
+      expect(userId).toEqual('user-12345678901234567890')
     })
   })
 })

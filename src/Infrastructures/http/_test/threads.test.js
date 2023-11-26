@@ -1,4 +1,5 @@
 import AuthHelper from '../../../../tests/AuthHelper.js'
+import CommentLikeTableTestHelper from '../../../../tests/CommentLikeTableTestHelper.js'
 import CommentsTableTestHelper from '../../../../tests/CommentsTableTestHelper.js'
 import RepliesTableTestHelper from '../../../../tests/RepliesTableTestHelper.js'
 import ThreadsTableTestHelper from '../../../../tests/ThreadsTableTestHelper.js'
@@ -10,7 +11,7 @@ import createServer from '../createServer.js'
 describe('/threads endpoint', () => {
   let accessToken
   const fakeUser = {
-    id: 'user-123456789012345678901',
+    id: 'user-12345678901234567890',
     username: 'userx'
   }
 
@@ -23,6 +24,7 @@ describe('/threads endpoint', () => {
     await ThreadsTableTestHelper.cleanTable()
     await CommentsTableTestHelper.cleanTable()
     await RepliesTableTestHelper.cleanTable()
+    await CommentLikeTableTestHelper.cleanTable()
   })
 
   afterAll(async () => {
@@ -207,39 +209,46 @@ describe('/threads endpoint', () => {
     it('should response 200 with valid data', async () => {
       // Arrange
       const fakeUser2 = {
-        id: 'user-000000000000000000000',
+        id: 'user-00000000000000000000',
         username: 'userxy'
       }
 
       const fakeUser3 = {
-        id: 'user-000000000000000000001',
+        id: 'user-00000000000000000001',
         username: 'userxyz'
       }
 
       const fakeThread = {
-        id: 'thread-000000000000000000001',
+        id: 'thread-00000000000000000001',
         title: 'Thread title',
         body: 'Thread body content',
         owner: fakeUser.id
       }
 
       const fakeComment1 = {
-        id: 'comment-000000000000000000000',
+        id: 'comment-00000000000000000000',
         content: 'Comment 1',
         owner: fakeUser2.id,
         threadId: fakeThread.id
       }
       const fakeComment2 = {
-        id: 'comment-000000000000000000001',
+        id: 'comment-00000000000000000001',
         content: 'Comment 2',
         owner: fakeUser3.id,
         threadId: fakeThread.id
       }
 
       const fakeReply = {
-        id: 'reply-123456789012345678901',
+        id: 'reply-12345678901234567890',
         content: 'Reply',
         owner: fakeUser3.id,
+        commentId: fakeComment1.id
+      }
+
+      // user2 like comment 1
+      const fakeLikeComment = {
+        id: 'like-12345678901234567890',
+        userId: fakeUser2.id,
         commentId: fakeComment1.id
       }
 
@@ -249,6 +258,7 @@ describe('/threads endpoint', () => {
       await CommentsTableTestHelper.addComment(fakeComment1)
       await CommentsTableTestHelper.addComment(fakeComment2)
       await RepliesTableTestHelper.addReply(fakeReply)
+      await CommentLikeTableTestHelper.addCommentLike(fakeLikeComment)
 
       const server = await createServer(container)
 
@@ -273,19 +283,26 @@ describe('/threads endpoint', () => {
       expect(date).toBeDefined()
       expect(username).toEqual(fakeUser.username)
       expect(comments).toHaveLength(2)
+
+      // FakeComment1
       expect(comments[0].id).toEqual(fakeComment1.id)
       expect(comments[0].username).toEqual(fakeUser2.username)
       expect(comments[0].content).toEqual(fakeComment1.content)
       expect(comments[0].date).toBeDefined()
+      expect(comments[0].likeCount).toStrictEqual(1)
       expect(comments[0].replies).toHaveLength(1)
       expect(comments[0].replies[0].id).toEqual(fakeReply.id)
       expect(comments[0].replies[0].username).toEqual(fakeUser3.username)
       expect(comments[0].replies[0].content).toEqual(fakeReply.content)
       expect(comments[0].replies[0].date).toBeDefined()
+
+      // FakeComment1
       expect(comments[1].id).toEqual(fakeComment2.id)
       expect(comments[1].username).toEqual(fakeUser3.username)
       expect(comments[1].content).toEqual(fakeComment2.content)
       expect(comments[1].date).toBeDefined()
+      expect(comments[1].likeCount).toStrictEqual(0)
+      expect(comments[1].replies).toHaveLength(0)
     })
 
     it('should response 404 when thread not exist', async () => {

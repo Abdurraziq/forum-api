@@ -8,7 +8,7 @@ import ThreadRepositoryPostgres from '../ThreadRepositoryPostgres.js'
 
 describe('ThreadRepositoryPostgres', () => {
   const fakeUser = {
-    id: 'user-123456789012345678901',
+    id: 'user-12345678901234567890',
     username: 'user'
   }
 
@@ -31,10 +31,10 @@ describe('ThreadRepositoryPostgres', () => {
       const newThread = new NewThread({
         title: 'Thread title',
         body: 'Thread body',
-        owner: 'user-123456789012345678901'
+        owner: 'user-12345678901234567890'
       })
 
-      const fakeIdGenerator = () => '123456789012345678901' // stub!
+      const fakeIdGenerator = () => '12345678901234567890' // stub!
       const threadRepositoryPostgres = new ThreadRepositoryPostgres(pool, fakeIdGenerator)
 
       // Action
@@ -59,7 +59,7 @@ describe('ThreadRepositoryPostgres', () => {
         owner: fakeUser.id
       })
 
-      const fakeIdGenerator = () => '123456789012345678901' // stub!
+      const fakeIdGenerator = () => '12345678901234567890' // stub!
       const threadRepositoryPostgres = new ThreadRepositoryPostgres(pool, fakeIdGenerator)
 
       // Action
@@ -87,7 +87,7 @@ describe('ThreadRepositoryPostgres', () => {
     it('should not throw NotFoundError when thread is found', async () => {
       // Arrange
       const fakeThread = {
-        id: 'thread-123456789012345678901',
+        id: 'thread-12345678901234567890',
         owner: fakeUser.id
       }
       await ThreadsTableTestHelper.addThread(fakeThread)
@@ -112,7 +112,7 @@ describe('ThreadRepositoryPostgres', () => {
     it('should return thread correctly', async () => {
       // Arrange
       const fakeThread = {
-        id: 'thread-123456789012345678901',
+        id: 'thread-12345678901234567890',
         title: 'Thread title',
         body: 'Thread body',
         owner: fakeUser.id

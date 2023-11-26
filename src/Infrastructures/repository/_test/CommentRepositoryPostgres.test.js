@@ -10,12 +10,12 @@ import CommentRepositoryPostgres from '../CommentRepositoryPostgres.js'
 
 describe('CommentRepositoryPostgres', () => {
   const fakeUser = {
-    id: 'user-123456789012345678901',
+    id: 'user-12345678901234567890',
     username: 'user'
   }
 
   const fakeThread = {
-    id: 'thread-123456789012345678901',
+    id: 'thread-12345678901234567890',
     owner: fakeUser.id
   }
 
@@ -43,7 +43,7 @@ describe('CommentRepositoryPostgres', () => {
         threadId: fakeThread.id
       })
 
-      const fakeIdGenerator = () => '123456789012345678901' // stub!
+      const fakeIdGenerator = () => '12345678901234567890' // stub!
       const commentRepositoryPostgres = new CommentRepositoryPostgres(pool, fakeIdGenerator)
 
       // Action
@@ -71,7 +71,7 @@ describe('CommentRepositoryPostgres', () => {
         threadId: fakeThread.id
       })
 
-      const fakeIdGenerator = () => '123456789012345678901' // stub!
+      const fakeIdGenerator = () => '12345678901234567890' // stub!
       const commentRepositoryPostgres = new CommentRepositoryPostgres(pool, fakeIdGenerator)
 
       // Action
@@ -90,7 +90,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should throw NotFoundError when comment in thread is not found', async () => {
       // Arrange
       const fakeComment = {
-        id: 'comment-123456789012345678901',
+        id: 'comment-12345678901234567890',
         owner: fakeUser.id,
         threadId: fakeThread.id
       }
@@ -118,7 +118,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should throw NotFoundError when comment in thread is (soft) deleted', async () => {
       // Arrange
       const fakeComment = {
-        id: 'comment-123456789012345678901',
+        id: 'comment-12345678901234567890',
         owner: fakeUser.id,
         threadId: fakeThread.id
       }
@@ -138,7 +138,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should not throw NotFoundError when comment in thread is found', async () => {
       // Arrange
       const fakeComment = {
-        id: 'comment-123456789012345678901',
+        id: 'comment-12345678901234567890',
         owner: fakeUser.id,
         threadId: fakeThread.id
       }
@@ -158,7 +158,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should throw AuthorizationError when comment and owner is not match', async () => {
       // Arrange
       const fakeComment = {
-        id: 'comment-123456789012345678901',
+        id: 'comment-12345678901234567890',
         owner: fakeUser.id,
         threadId: fakeThread.id
       }
@@ -183,7 +183,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should not throw AuthorizationError when comment and owner is match', async () => {
       // Arrange
       const fakeComment = {
-        id: 'comment-123456789012345678901',
+        id: 'comment-12345678901234567890',
         owner: fakeUser.id,
         threadId: fakeThread.id
       }
@@ -202,7 +202,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should soft delete comment correctly', async () => {
       // Arrange
       const fakeComment = {
-        id: 'comment-123456789012345678901',
+        id: 'comment-12345678901234567890',
         owner: fakeUser.id,
         threadId: fakeThread.id
       }
@@ -237,7 +237,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should return comments correctly', async () => {
       // Arrange
       const fakeComment = {
-        id: 'comment-123456789012345678901',
+        id: 'comment-12345678901234567890',
         content: 'Comment',
         owner: fakeUser.id,
         threadId: fakeThread.id
@@ -261,7 +261,7 @@ describe('CommentRepositoryPostgres', () => {
     it('should return comments content correctly, before and after soft deletion', async () => {
       // Arrange
       const fakeComment = {
-        id: 'comment-123456789012345678901',
+        id: 'comment-12345678901234567890',
         content: 'Comment',
         owner: fakeUser.id,
         threadId: fakeThread.id
