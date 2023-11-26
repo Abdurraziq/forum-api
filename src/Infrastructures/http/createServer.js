@@ -8,8 +8,8 @@ import threads from '../../Interfaces/http/api/threads/index.js'
 
 export default async (container) => {
   const server = Hapi.server({
-    host: process.env.HOST,
-    port: process.env.PORT,
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 5000,
     routes: {
       cors: {
         origin: ['*']
