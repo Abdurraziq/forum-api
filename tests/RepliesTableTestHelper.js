@@ -3,10 +3,10 @@ import pool from '../src/Infrastructures/database/postgres/pool.js'
 
 export default {
   async addReply ({
-    id = 'reply-123456789012345678901',
+    id = 'reply-12345678901234567890',
     content = 'Replies',
-    owner = 'user-123456789012345678901',
-    commentId = 'comment-123456789012345678901'
+    owner = 'user-12345678901234567890',
+    commentId = 'comment-12345678901234567890'
   }) {
     const query = {
       text: 'INSERT INTO replies VALUES($1, $2, $3, $4)',

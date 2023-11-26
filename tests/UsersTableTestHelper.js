@@ -3,7 +3,7 @@ import pool from '../src/Infrastructures/database/postgres/pool.js'
 
 export default {
   async addUser ({
-    id = 'user-123456789012345678901',
+    id = 'user-12345678901234567890',
     username = 'userx',
     password = 'secret',
     fullname = 'User x fullname'

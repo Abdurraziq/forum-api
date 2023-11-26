@@ -3,10 +3,10 @@ import pool from '../src/Infrastructures/database/postgres/pool.js'
 
 export default {
   async addThread ({
-    id = 'thread-123456789012345678901',
+    id = 'thread-12345678901234567890',
     title = 'Threads title',
     body = 'Treads body content',
-    owner = 'user-123456789012345678901'
+    owner = 'user-12345678901234567890'
   }) {
     const query = {
       text: 'INSERT INTO threads VALUES($1, $2, $3, $4)',
