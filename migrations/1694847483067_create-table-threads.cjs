@@ -1,7 +1,7 @@
 exports.up = (pgm) => {
   pgm.createTable('threads', {
     id: {
-      type: 'CHAR(28)',
+      type: 'CHAR(27)',
       primaryKey: true
     },
     title: {
@@ -13,7 +13,7 @@ exports.up = (pgm) => {
       notNull: true
     },
     owner: {
-      type: 'CHAR(26)',
+      type: 'CHAR(25)',
       notNull: true,
       references: 'users(id)',
       onDelete: 'cascade'

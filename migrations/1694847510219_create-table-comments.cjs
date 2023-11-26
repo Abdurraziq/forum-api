@@ -1,7 +1,7 @@
 exports.up = (pgm) => {
   pgm.createTable('comments', {
     id: {
-      type: 'CHAR(29)',
+      type: 'CHAR(28)',
       primaryKey: true
     },
     content: {
@@ -9,13 +9,13 @@ exports.up = (pgm) => {
       notNull: true
     },
     owner: {
-      type: 'CHAR(26)',
+      type: 'CHAR(25)',
       notNull: true,
       references: 'users(id)',
       onDelete: 'cascade'
     },
     thread_id: {
-      type: 'CHAR(28)',
+      type: 'CHAR(27)',
       notNull: true,
       references: 'threads(id)',
       onDelete: 'cascade'
