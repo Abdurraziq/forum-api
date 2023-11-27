@@ -34,3 +34,9 @@ Submission **Proyek Forun API**  untuk kelas
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------- |
 | **`POST`**   | `/threads/{threadId}/comments/{commentId/replies`            | Menambahkan balasan komentar yang ada pada suatu thread |
 | **`DELETE`** | `/threads/{threadId}/comments/{commentId}/replies/{replyId}` | Menghapus balasan komentar yang ada pada suatu thread   |
+
+### 5. Menyukai dan Batal Menyukai Komentar
+
+| Methode   | Endpoint                                         | Keterangan                                             |
+| --------- | ------------------------------------------------ | ------------------------------------------------------ |
+| **`PUT`** | `/threads/{threadId}/comments/{commentId}/likes` | Menyukai dan batal menyukai komentar pada suatu thread |
