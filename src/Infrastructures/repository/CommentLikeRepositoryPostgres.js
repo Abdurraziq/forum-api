@@ -37,4 +37,13 @@ export default class CommentLikeRepositoryPostgres extends CommentLikeRepository
     }
     await this.#pool.query(query)
   }
+
+  async getCommentLikesCount (commentId) {
+    const query = {
+      text: 'SELECT id FROM comment_likes WHERE comment_id = $1',
+      values: [commentId]
+    }
+    const { rowCount } = await this.#pool.query(query)
+    return rowCount
+  }
 }
