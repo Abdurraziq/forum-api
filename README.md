@@ -3,7 +3,11 @@
 Submission **Proyek Forun API**  untuk kelas
 [ Menjadi Back-End Developer Expert | Dicoding Indonesia](https://www.dicoding.com/academies/276).
 
+Repository: [Github](https://github.com/Abdurraziq/forum-api)
+
 ## API Specs
+
+BASE URL: [https://neat-boats-accept-joyously.a276.dcdg.xyz](https://neat-boats-accept-joyously.a276.dcdg.xyz)
 
 ### 1. Registrasi dan Autentikasi Pengguna
    
@@ -34,3 +38,16 @@ Submission **Proyek Forun API**  untuk kelas
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------- |
 | **`POST`**   | `/threads/{threadId}/comments/{commentId/replies`            | Menambahkan balasan komentar yang ada pada suatu thread |
 | **`DELETE`** | `/threads/{threadId}/comments/{commentId}/replies/{replyId}` | Menghapus balasan komentar yang ada pada suatu thread   |
+
+### 5. Menyukai Komentar
+
+| Methode   | Endpoint                                        | Keterangan                                  |
+| --------- | ----------------------------------------------- | ------------------------------------------- |
+| **`PUT`** | `/threads/{threadId}/comments/{commentId/likes` | Menyukai atau batal menyukai suatu komentar |
+
+### 5. Health Status
+
+| Methode   | Endpoint         | Keterangan                           |
+| --------- | ---------------- | ------------------------------------ |
+| **`GET`** | `/health-status` | Memeriksa status server dan database |
+
