@@ -12,6 +12,7 @@ import pool from './database/postgres/pool.js'
 import AuthenticationRepository from '../Domains/authentications/AuthenticationRepository.js'
 import CommentRepository from '../Domains/comments/CommentRepository.js'
 import CommentLikeRepository from '../Domains/comment_likes/CommentLikeRepository.js'
+import HealthStatusRepository from '../Domains/health-status/HealthStatusRepository.js'
 import ReplyRepository from '../Domains/replies/ReplyRepository.js'
 import ThreadRepository from '../Domains/threads/ThreadRepository.js'
 import UserRepository from '../Domains/users/UserRepository.js'
@@ -19,6 +20,7 @@ import UserRepository from '../Domains/users/UserRepository.js'
 import AuthenticationRepositoryPostgres from './repository/AuthenticationRepositoryPostgres.js'
 import CommentRepositoryPostgres from './repository/CommentRepositoryPostgres.js'
 import CommentLikeRepositoryPostgres from './repository/CommentLikeRepositoryPostgres.js'
+import HealthStatusRepositoryPostgres from './repository/HealthStatusRepositoryPostgres.js'
 import ReplyRepositoryPostgres from './repository/ReplyRepositoryPostgres.js'
 import ThreadRepositoryPostgres from './repository/ThreadRepositoryPostgres.js'
 import UserRepositoryPostgres from './repository/UserRepositoryPostgres.js'
@@ -35,6 +37,7 @@ import AddThreadUseCase from '../Applications/use_case/AddThreadUseCase.js'
 import AddUserUseCase from '../Applications/use_case/AddUserUseCase.js'
 import DeleteCommentUseCase from '../Applications/use_case/DeleteCommentUseCase.js'
 import DeleteReplyUseCase from '../Applications/use_case/DeleteReplyUseCase.js'
+import GetHealthStatusUseCase from '../Applications/use_case/GetHealthStatusUseCase.js'
 import GetThreadUseCase from '../Applications/use_case/GetThreadUseCase.js'
 import LikeCommentUseCase from '../Applications/use_case/LikeCommentUseCase.js'
 import LoginUserUseCase from '../Applications/use_case/LoginUserUseCase.js'
@@ -145,6 +148,17 @@ container.register([
         },
         {
           concrete: nanoid
+        }
+      ]
+    }
+  },
+  {
+    key: HealthStatusRepository.name,
+    Class: HealthStatusRepositoryPostgres,
+    parameter: {
+      dependencies: [
+        {
+          concrete: pool
         }
       ]
     }
@@ -336,6 +350,19 @@ container.register([
         {
           name: 'commentLikeRepository',
           internal: CommentLikeRepository.name
+        }
+      ]
+    }
+  },
+  {
+    key: GetHealthStatusUseCase.name,
+    Class: GetHealthStatusUseCase,
+    parameter: {
+      injectType: 'destructuring',
+      dependencies: [
+        {
+          name: 'healthStatusRepository',
+          internal: HealthStatusRepository.name
         }
       ]
     }

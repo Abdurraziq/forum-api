@@ -5,11 +5,12 @@ import DomainErrorTranslator from '../../Commons/exceptions/DomainErrorTranslato
 import users from '../../Interfaces/http/api/users/index.js'
 import authentications from '../../Interfaces/http/api/authentications/index.js'
 import threads from '../../Interfaces/http/api/threads/index.js'
+import healthStatus from '../../Interfaces/http/api/healthStatus/index.js'
 
 export default async (container) => {
   const server = Hapi.server({
-    host: process.env.HOST || 'localhost',
-    port: process.env.PORT || 5000,
+    host: process.env.HOST,
+    port: process.env.PORT,
     routes: {
       cors: {
         origin: ['*']
@@ -48,6 +49,10 @@ export default async (container) => {
     },
     {
       plugin: threads,
+      options: { container }
+    },
+    {
+      plugin: healthStatus,
       options: { container }
     }
   ])
